@@ -1,0 +1,40 @@
+<ng-container>
+    <mat-toolbar color="primary" class="app-header">
+        <mat-toolbar-row>
+            <a routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" class="mat-button" mat-button>
+                <span class="mat-button-wrapper">
+                    <mat-icon>home</mat-icon>
+                    <span>Home</span>
+                </span>
+            </a>
+            <a routerLink="/notes" routerLinkActive="active" class="mat-button" mat-button *ngIf="auth.loggedIn">
+                <span class="mat-button-wrapper">
+                    <span>Notes</span>
+                </span>
+            </a>
+            <a routerLink="/login" class="mat-button" mat-button routerLinkActive="active" *ngIf="!auth.loggedIn">
+                <span class="mat-button-wrapper">
+                    <span>Login</span>
+                </span>
+            </a>
+            <a routerLink="/register" class="mat-button" mat-button routerLinkActive="active" *ngIf="!auth.loggedIn">
+                <span class="mat-button-wrapper">
+                    <span>Register</span>
+                </span>
+            </a>
+            <a routerLink="/account" class="mat-button" mat-button routerLinkActive="active" *ngIf="auth.loggedIn">
+                <span class="mat-button-wrapper">
+                    <span>Account ({{auth.currentUser.username}})</span>
+                </span>
+            </a>
+            <a routerLink="/logout" class="mat-button" mat-button routerLinkActive="active" *ngIf="auth.loggedIn">
+                <span class="mat-button-wrapper">
+                    <span>Logout</span>
+                </span>
+            </a>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-sidenav-container class="app-container">
+        <router-outlet></router-outlet>
+    </mat-sidenav-container>   
+</ng-container>
